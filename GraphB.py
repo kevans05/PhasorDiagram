@@ -73,5 +73,6 @@ z = cmath.polar(rectangularCurrent_C)
 plt.polar([z[1],(x[1])],[mapRange(z[0],0,20,0,125),mapRange(x[0],0,20,0,125)],marker='',color='gold',linestyle = ':')
 z = cmath.polar(rectangularCurrent_B)
 plt.polar([z[1],(x[1])],[mapRange(z[0],0,20,0,125),mapRange(x[0],0,20,0,125)],marker=' ',color='navy',linestyle = ':')
+
 plt.show()
 
