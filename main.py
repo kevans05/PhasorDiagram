@@ -134,11 +134,10 @@ def graph_p3_w3(phase_a, phase_b, phase_c, scale_voltage=1, scale_current=1):
 
 def cross_phase_p3_w4(phase_a, phase_b, phase_c, ct_primary=1, ct_secondary=1, pt_primary=1, pt_secondary=1):
 	text_file = open("Cross Phase 3 Phase 4 Wire.csv", "w")
-	string_x = str("," , " Phase A" , "," , "Phase B" , "," , "Phase C" , ",")
+	string_x = ',Phase A,Phase B,Phase C,'
 	text_file.write(string_x)
-	string_x = "Multimeter Secondary Voltage (V)" , "," , phase_a.returnVoltageRadialCoordinate()),"," ,phase_b.returnVoltageRadialCoordinate(), "," , phase_c.returnVoltageRadialCoordinate(),","
+	string_x = 'Multimeter Secondary Voltage (V),%d,%d,%d,' % phase_a.returnVoltageRadialCoordinate(),"," ,phase_b.returnVoltageRadialCoordinate(), "," , phase_c.returnVoltageRadialCoordinate()
 	text_file.write(str(string_x))
-
 	text_file.close()
 
 class newPhasor:
