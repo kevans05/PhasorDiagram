@@ -15,8 +15,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/PhasorDiagram$GraphG.coverage" NAME="GraphG Coverage Results" MODIFIED="1547235864563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PhasorDiagram$2ElementMeterBalanced.coverage" NAME="2ElementMeterBalanced Coverage Results" MODIFIED="1547142118188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PhasorDiagram$main.coverage" NAME="main Coverage Results" MODIFIED="1547059069453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PhasorDiagram$2ElementMeterBalanced.coverage" NAME="2ElementMeterBalanced Coverage Results" MODIFIED="1547142118188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PhasorDiagram$A.coverage" NAME="A Coverage Results" MODIFIED="1547224904717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -24,10 +24,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="139" column="34" lean-forward="true" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
+            <state relative-caret-position="1383">
+              <caret line="219" column="21" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
               <folding>
-                <element signature="e#40#69#0" expanded="true" />
+                <element signature="e#1#39#0" expanded="true" />
+                <element signature="e#304#312#0" />
+                <element signature="e#373#447#0" />
+                <element signature="e#533#2995#0" />
+                <element signature="e#3077#6526#0" />
+                <element signature="e#11184#15724#0" />
+                <element signature="e#9521#10627#0" />
               </folding>
             </state>
           </provider>
@@ -35,7 +41,10 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cross Phase 3 Phase 4 Wire.csv">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="csv-text-editor" />
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -101,14 +110,15 @@
         <option value="$PROJECT_DIR$/graph.py" />
         <option value="$PROJECT_DIR$/meterTool/threePhaseTwoWire.py" />
         <option value="$PROJECT_DIR$/polarGraphs/graph.py" />
+        <option value="$PROJECT_DIR$/Cross Phase 3 Phase 4 Wire.csv" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="40" />
-    <option name="width" value="1186" />
-    <option name="height" value="657" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -116,7 +126,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,10 +133,15 @@
               <item name="PhasorDiagram" type="b2602c69:ProjectViewProjectNode" />
               <item name="PhasorDiagram" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PhasorDiagram" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,6 +254,7 @@
       <workItem from="1550024169394" duration="772000" />
       <workItem from="1550102559946" duration="777000" />
       <workItem from="1550104954913" duration="1464000" />
+      <workItem from="1550538402124" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1547468202775</created>
@@ -322,7 +337,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82730000" />
+    <option name="totallyTimeSpent" value="90796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -334,10 +349,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1176" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18070363" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18168813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -352,12 +367,12 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.33557048" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.2939759" />
       <window_info anchor="bottom" id="File Transfer" order="13" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" x="0" y="23" width="1440" height="877" id="SciView" maximized="true" order="3" sideWeight="0.49335864" weight="0.38539445" />
+      <window_info anchor="right" x="0" y="23" width="1440" height="877" id="SciView" maximized="true" order="3" sideWeight="0.49335864" weight="0.38483548" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -408,28 +423,32 @@
     <entry file="file://$PROJECT_DIR$/graph.py" />
     <entry file="file://$PROJECT_DIR$/meterTool/threePhaseTwoWire.py" />
     <entry file="file://$PROJECT_DIR$/polarGraphs/graph.py" />
-    <entry file="file://$PROJECT_DIR$/Cross Phase 3 Phase 4 Wire.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/PhasorDiagrams/Lib/ssl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/PhasorDiagrams/Lib/ssl.py" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="139" column="34" lean-forward="true" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
+        <state relative-caret-position="1383">
+          <caret line="219" column="21" selection-start-line="219" selection-start-column="21" selection-end-line="219" selection-end-column="21" />
           <folding>
-            <element signature="e#40#69#0" expanded="true" />
+            <element signature="e#1#39#0" expanded="true" />
+            <element signature="e#304#312#0" />
+            <element signature="e#373#447#0" />
+            <element signature="e#533#2995#0" />
+            <element signature="e#3077#6526#0" />
+            <element signature="e#11184#15724#0" />
+            <element signature="e#9521#10627#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cross Phase 3 Phase 4 Wire.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

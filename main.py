@@ -1,18 +1,12 @@
-#Imports from Standard Python Libraries
-from json import loads, dumps
-from math import radians, degrees
+from math import radians, degrees, cos
 from cmath import rect, polar
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Import from Custom Python Libraries
-
-
 #Define an new class to hold Phasers
 def creatReactents(polarA,polarB):
 	return 0
-
 
 
 def mapRange(x, from_min, from_max, to_min, to_max):
@@ -134,11 +128,185 @@ def graph_p3_w3(phase_a, phase_b, phase_c, scale_voltage=1, scale_current=1):
 
 def cross_phase_p3_w4(phase_a, phase_b, phase_c, ct_primary=1, ct_secondary=1, pt_primary=1, pt_secondary=1):
 	text_file = open("Cross Phase 3 Phase 4 Wire.csv", "w")
-	string_x = ',Phase A,Phase B,Phase C,'
+	string_x = ',,Phase A,Phase B,Phase C,\n'
 	text_file.write(string_x)
-	string_x = 'Multimeter Secondary Voltage (V),%d,%d,%d,' % phase_a.returnVoltageRadialCoordinate(),"," ,phase_b.returnVoltageRadialCoordinate(), "," , phase_c.returnVoltageRadialCoordinate()
+	string_x = 'Multimeter Reading,Secondary Voltage (V),%d,%d,%d,\n' % (phase_a.returnVoltageRadialCoordinate(),
+																		 phase_b.returnVoltageRadialCoordinate(),
+																		 phase_c.returnVoltageRadialCoordinate())
 	text_file.write(str(string_x))
+	string_x = ',PT Ratio,%i:%i,%i:%i,%i:%i,\n' % (pt_primary,pt_secondary,pt_primary,pt_secondary,pt_primary,pt_secondary)
+	text_file.write(str(string_x))
+	string_x = ',Primary Voltage (V),%d,%d,%d,\n' % (phase_a.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary),
+													 phase_b.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary),
+													 phase_c.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary))
+	text_file.write(string_x)
+	string_x = ',,Phase A, Phase B, PhaseC,\n'
+	text_file.write(string_x)
+	string_x = 'Multimeter Reading,Secondary Current,%d,%d,%d,\n'  % (phase_a.returnCurrentRadialCoordinate(),
+															  phase_b.returnCurrentRadialCoordinate(),
+															  phase_c.returnCurrentRadialCoordinate())
+	text_file.write(string_x)
+	string_x = ',PT Ratio,%i:%i,%i:%i,%i:%i,\n' % (ct_primary, ct_secondary, ct_primary, ct_secondary, ct_primary, ct_secondary)
+	text_file.write(string_x)
+	string_x = ',Calculated Primary,%d,%d,%d,\n' % (phase_a.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary),
+													 phase_b.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary),
+													 phase_c.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary))
+
+	text_file.write(string_x)
+	string_x = '\nCross Phase Readings\n,Reading,Ammeter,Amps,Wattmeter,Watts (Including Polarity),\n'
+	text_file.write(string_x)
+	IAEAN = (phaseA.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(phaseA.returnCurrentAngularCoordinate()+phaseA.returnVoltageAngularCoordinate()))
+	string_x = 'A,IA,%d,IA & EAN,%d,\n' % (phaseA.returnCurrentRadialCoordinate(),IAEAN)
+	text_file.write(string_x)
+
+	IBEBN =  (phaseB.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(phaseB.returnCurrentAngularCoordinate()))
+	string_x = 'B,IB,%d,IB & EBN,%d,\n' % (phaseB.returnCurrentRadialCoordinate(),IBEBN)
+	text_file.write(string_x)
+
+	ICECN = (phaseB.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(
+		phaseB.returnCurrentAngularCoordinate()))
+	string_x = 'C,IC,%d,IC & ECN,%d,\n' % (phaseC.returnCurrentRadialCoordinate(),ICECN)
+	text_file.write(string_x)
+
+	string_x = 'D,,,Total=,%fW,\n' % (IAEAN+IBEBN+ICECN)
+	text_file.write(string_x)
+
+	IAECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,,IA & ECN,%d,\n' % (IAECN)
+	text_file.write(string_x)
+
+	IAEAB = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = 'E,, , IA & EBN, %d,\n' % (IAEAB)
+	text_file.write(string_x)
+
+	IBEAN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = 'F,, , IB & EAN, %d,\n' % (IBEAN)
+	text_file.write(string_x)
+
+	IBECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IB & ECN, %d,\n' % (IBECN)
+	text_file.write(string_x)
+
+	IBECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IB & ECN, %d,\n' % (IBECN)
+	text_file.write(string_x)
+
+	ICEAN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IC & EAN, %d,\n' % (ICEAN)
+	text_file.write(string_x)
+
+	ICEBN = phaseA.returnCurrentAngularCoordinate() * phaseC.returnVoltageRadialCoordinate() * cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IC & EBN, %d,\n' % (ICEBN)
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Volt-Amps,,,,\n,,,,\n,,,,\n,,,,\n'
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Disk Watts,,,,\n,,,,\n,,,,\n,,,,\n'
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Elements Power,,,,\n'
+	text_file.write(string_x)
+
+	string_x = 'Left Element,Center Element,Right Element,,'
+	text_file.write(string_x)
+
+	string_x = ',,,,\n,,,,\nMeter Power,,,,\n'
+	text_file.write(string_x)
+
 	text_file.close()
+
+
+def cross_phase_p3_w3(phase_a, phase_b, phase_c, ct_primary=1, ct_secondary=1, pt_primary=1, pt_secondary=1):
+	text_file = open("Cross Phase 3 Phase 4 Wire.csv", "w")
+	string_x = ',,Phase A,Phase B,Phase C,\n'
+	text_file.write(string_x)
+	string_x = 'Multimeter Reading,Secondary Voltage (V),%d,%d,%d,\n' % (phase_a.returnVoltageRadialCoordinate(),
+																		 phase_b.returnVoltageRadialCoordinate(),
+																		 phase_c.returnVoltageRadialCoordinate())
+	text_file.write(str(string_x))
+	string_x = ',PT Ratio,%i:%i,%i:%i,%i:%i,\n' % (pt_primary,pt_secondary,pt_primary,pt_secondary,pt_primary,pt_secondary)
+	text_file.write(str(string_x))
+	string_x = ',Primary Voltage (V),%d,%d,%d,\n' % (phase_a.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary),
+													 phase_b.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary),
+													 phase_c.returnVoltageRadialCoordinate()*(pt_primary/pt_secondary))
+	text_file.write(string_x)
+	string_x = ',,Phase A, Phase B, PhaseC,\n'
+	text_file.write(string_x)
+	string_x = 'Multimeter Reading,Secondary Current,%d,%d,%d,\n'  % (phase_a.returnCurrentRadialCoordinate(),
+															  phase_b.returnCurrentRadialCoordinate(),
+															  phase_c.returnCurrentRadialCoordinate())
+	text_file.write(string_x)
+	string_x = ',PT Ratio,%i:%i,%i:%i,%i:%i,\n' % (ct_primary, ct_secondary, ct_primary, ct_secondary, ct_primary, ct_secondary)
+	text_file.write(string_x)
+	string_x = ',Calculated Primary,%d,%d,%d,\n' % (phase_a.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary),
+													 phase_b.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary),
+													 phase_c.returnCurrentRadialCoordinate()*(ct_secondary/ct_primary))
+
+	text_file.write(string_x)
+	string_x = '\nCross Phase Readings\n,Reading,Ammeter,Amps,Wattmeter,Watts (Including Polarity),\n'
+	text_file.write(string_x)
+	IAEAN = (phaseA.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(phaseA.returnCurrentAngularCoordinate()+phaseA.returnVoltageAngularCoordinate()))
+	string_x = 'A,IA,%d,IA & EAN,%d,\n' % (phaseA.returnCurrentRadialCoordinate(),IAEAN)
+	text_file.write(string_x)
+
+	IBEBN =  (phaseB.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(phaseB.returnCurrentAngularCoordinate()))
+	string_x = 'B,IB,%d,IB & EBN,%d,\n' % (phaseB.returnCurrentRadialCoordinate(),IBEBN)
+	text_file.write(string_x)
+
+	ICECN = (phaseB.returnCurrentRadialCoordinate() * phaseA.returnCurrentAngularCoordinate() * cos(
+		phaseB.returnCurrentAngularCoordinate()))
+	string_x = 'C,IC,%d,IC & ECN,%d,\n' % (phaseC.returnCurrentRadialCoordinate(),ICECN)
+	text_file.write(string_x)
+
+	string_x = 'D,,,Total=,%fW,\n' % (IAEAN+IBEBN+ICECN)
+	text_file.write(string_x)
+
+	IAECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,,IA & ECN,%d,\n' % (IAECN)
+	text_file.write(string_x)
+
+	IAEAB = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = 'E,, , IA & EBN, %d,\n' % (IAEAB)
+	text_file.write(string_x)
+
+	IBEAN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = 'F,, , IB & EAN, %d,\n' % (IBEAN)
+	text_file.write(string_x)
+
+	IBECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IB & ECN, %d,\n' % (IBECN)
+	text_file.write(string_x)
+
+	IBECN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IB & ECN, %d,\n' % (IBECN)
+	text_file.write(string_x)
+
+	ICEAN = phaseA.returnCurrentAngularCoordinate()*phaseC.returnVoltageRadialCoordinate()*cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IC & EAN, %d,\n' % (ICEAN)
+	text_file.write(string_x)
+
+	ICEBN = phaseA.returnCurrentAngularCoordinate() * phaseC.returnVoltageRadialCoordinate() * cos(phaseC.returnCurrentAngularCoordinate())
+	string_x = ',,, IC & EBN, %d,\n' % (ICEBN)
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Volt-Amps,,,,\n,,,,\n,,,,\n,,,,\n'
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Disk Watts,,,,\n,,,,\n,,,,\n,,,,\n'
+	text_file.write(string_x)
+
+	string_x = ',,,,\nCalculating the Elements Power,,,,\n'
+	text_file.write(string_x)
+
+	string_x = 'Left Element,Center Element,Right Element,,'
+	text_file.write(string_x)
+
+	string_x = ',,,,\n,,,,\nMeter Power,,,,\n'
+	text_file.write(string_x)
+
+	text_file.close()
+
 
 class newPhasor:
 	def __init__(self, voltageRadialCoordinate = 0, currentRadialCoordinate=0, powerFactorAngle=0, angularCoordinate=0):
@@ -183,7 +351,7 @@ phaseC = newPhasor(voltageRadialCoordinate=120,currentRadialCoordinate=12,powerF
 
 graph_p3_w4(phaseA,phaseB,phaseC,1,5)
 graph_p3_w3(phaseA,phaseB,phaseC,1,5)
-cross_phase_p3_w4(phaseA,phaseB,phaseC)
+cross_phase_p3_w4(phaseA,phaseB,phaseC,1,2,2,1)
 
 #where stuff gets done to the data
 print(phaseA.returnVoltageRadialCoordinate(), polar(phaseA.returnCurrentPolar())[0], degrees(polar(phaseA.returnCurrentPolar())[1]))
